@@ -12,3 +12,4 @@ const port = 3000;
 server.listen(port, '127.0.0.1', () => {
   console.log(`Сервер запущен на 127.0.0.1:${port}`);
 });
+//node server.js для запуска
