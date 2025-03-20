@@ -1,0 +1,14 @@
+services:
+  node-app:
+    build: .
+    ports:
+      - "3000:3000"
+    container_name: node-server
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - node-app
+    container_name: nginx-proxy

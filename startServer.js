@@ -1,4 +1,3 @@
-//server.mjs
 const http = require('http');
 
 const server = http.createServer((req, res) => {
@@ -7,9 +6,9 @@ const server = http.createServer((req, res) => {
   res.end('Hello World!\n');
 });
 
-// Запуск локального сервера по указанному порту
+const host = '127.0.0.1';
 const port = 3000;
-server.listen(port, '127.0.0.1', () => {
-  console.log(`Сервер запущен на 127.0.0.1:${port}`);
+
+server.listen(port, host, () => {
+  console.log(`Сервер запущен на ${host}:${port}`);
 });
-//  node server.js для запуска
