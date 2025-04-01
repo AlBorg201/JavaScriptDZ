@@ -1,3 +1,4 @@
+// Флойд Уоршелл
 function findShortestPaths(graph) {
     let size = graph.length;
     let distances = [];
