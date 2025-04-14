@@ -10,8 +10,8 @@ async function* fibonacci(number) {
 }
 
 async function run() {
-    const fib = fibonacci(8);
-    for await (const num of fib) {
+    const number = fibonacci(8);
+    for await (const num of number) {
         console.log(num);
     }
 }
