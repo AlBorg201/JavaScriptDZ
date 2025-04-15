@@ -1,0 +1,21 @@
+.numbers-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+    .number {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+    }
+
+    @for $i from 1 through 100 {
+        .number:nth-child(#{$i}) {
+            color: rgb($i, (256 - $i), 0);
+        }
+    }
+}
