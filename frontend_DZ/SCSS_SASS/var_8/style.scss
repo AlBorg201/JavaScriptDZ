@@ -1,0 +1,260 @@
+@use 'sass:color';
+
+$primary-dark: #5a3bff;
+$primary-light: #7b57ff;
+$background-light: #f7fafc;
+$white: #ffffff;
+$text-color: #2d3748;
+$border-color: #e2e8f0;
+$gray-text: #a0aec0;
+$green: #28a745;
+$cube-color: #e6d7ff;
+$profit-color: #1cc243;
+$loss-color: #da1226;
+$row-highlight: #e2e8f0;
+$hover-color: #edf2f7;
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: $background-light;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+
+    &--sidebar {
+        width: 220px;
+        background: linear-gradient(to bottom, $primary-dark, $primary-light);
+        color: $white;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &--logo {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 60px;
+
+            & i {
+                font-size: 40px;
+            }
+        }
+
+        &--menu {
+            list-style: none;
+            padding: 0;
+
+            &--item {
+                display: flex;
+                align-items: center;
+                padding: 12px 15px;
+                font-size: 14px;
+                font-weight: 500;
+                cursor: pointer;
+                border-radius: 8px;
+                margin-bottom: 5px;
+
+                & i {
+                    margin-right: 12px;
+                    font-size: 16px;
+                    opacity: 0.8;
+                }
+
+                &.active {
+                    background-color: rgba($white, 0.15);
+                    font-weight: 700;
+
+                    & i {
+                        opacity: 1;
+                    }
+                }
+
+                &:hover {
+                    background-color: rgba($white, 0.1);
+                }
+            }
+        }
+
+        &--logout {
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            padding: 12px 15px;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: rgba($white, 0.1);
+            }
+        }
+    }
+
+    &--main {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+
+        &--header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+
+            & h1 {
+                font-size: 28px;
+                font-weight: 700;
+                margin: 0;
+                color: $text-color;
+            }
+
+            &--actions {
+                display: flex;
+                gap: 10px;
+
+                & button {
+                    padding: 8px 16px;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: 500;
+
+                    &.add-btn {
+                        background-color: $green;
+                        color: $white;
+                        padding: 8px 20px;
+
+                        &:hover {
+                            background-color: color.adjust($green, $lightness: -5%);
+                        }
+                    }
+
+                    &:not(.add-btn) {
+                        background-color: $white;
+                        border: 1px solid $border-color;
+                        padding: 8px;
+
+                        & i {
+                            color: $gray-text;
+                        }
+
+                        &:hover {
+                            background-color: $background-light;
+                        }
+                    }
+                }
+            }
+        }
+
+        &--table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: $background-light;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+
+            & th, & td {
+                padding: 15px 20px;
+                text-align: left;
+            }
+
+            & th {
+                font-weight: 500;
+                color: $gray-text;
+                text-transform: none;
+                font-size: 16px;
+                letter-spacing: 0.5px;
+            }
+
+            & td {
+                font-size: 14px;
+                color: $text-color;
+                font-weight: 400;
+
+                & img {
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    margin-right: 12px;
+                }
+
+                & span {
+                    display: flex;
+                    align-items: center;
+                }
+
+                &:nth-child(3) {
+                    color: $profit-color;
+                }
+
+                &:nth-child(4) {
+                    color: $loss-color;
+                }
+            }
+
+            & tbody tr {
+                background-color: $background-light;
+
+                &:nth-child(odd) {
+                    background-color: $row-highlight;
+                }
+
+                &:hover {
+                    background-color: $hover-color;
+                }
+            }
+        }
+
+        &--pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 25px;
+            gap: 10px;
+
+            & button {
+                padding: 8px;
+                border: 1px solid $border-color;
+                background-color: $white;
+                cursor: pointer;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+
+                & i {
+                    color: $text-color;
+                    font-size: 12px;
+                }
+
+                &:hover {
+                    background-color: $background-light;
+                }
+            }
+
+            & span {
+                font-size: 14px;
+                color: $text-color;
+
+                & .page-number {
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 24px;
+                    height: 24px;
+                    background-color: $border-color;
+                    border-radius: 4px;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+}
