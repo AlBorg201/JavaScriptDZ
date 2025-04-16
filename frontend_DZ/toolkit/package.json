@@ -1,0 +1,25 @@
+{
+  "name": "multi-env-project",
+  "version": "1.0.0",
+  "description": "Project with multiple environment configurations",
+  "main": "index.js",
+  "scripts": {
+    "build:local": "cross-env NODE_ENV=local webpack",
+    "build:dev": "cross-env NODE_ENV=dev webpack",
+    "build:prod": "cross-env NODE_ENV=prod webpack",
+    "start:local": "cross-env NODE_ENV=local node dist/bundle.js",
+    "start:dev": "cross-env NODE_ENV=dev node dist/bundle.js",
+    "start:prod": "cross-env NODE_ENV=prod node dist/bundle.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "webpack": "^5.99.5",
+    "webpack-cli": "^6.0.1",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

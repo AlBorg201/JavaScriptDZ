@@ -1,0 +1,208 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  height: 100vh;
+  background-color: #f7fafc;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+.container--sidebar {
+  width: 220px;
+  background: linear-gradient(to bottom, #5a3bff, #7b57ff);
+  color: #ffffff;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container--sidebar--logo {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+.container--sidebar--logo i {
+  font-size: 40px;
+}
+.container--sidebar--menu {
+  list-style: none;
+  padding: 0;
+}
+.container--sidebar--menu--item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+.container--sidebar--menu--item i {
+  margin-right: 12px;
+  font-size: 16px;
+  opacity: 0.8;
+}
+.container--sidebar--menu--item.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  font-weight: 700;
+}
+.container--sidebar--menu--item.active i {
+  opacity: 1;
+}
+.container--sidebar--menu--item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.container--sidebar--logout {
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 12px 15px;
+  border-radius: 8px;
+}
+.container--sidebar--logout:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.container--main {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+.container--main--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.container--main--header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: #2d3748;
+}
+.container--main--header--actions {
+  display: flex;
+  gap: 10px;
+}
+.container--main--header--actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+.container--main--header--actions button.add-btn {
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 8px 20px;
+}
+.container--main--header--actions button.add-btn:hover {
+  background-color: rgb(35.0724637681, 146.4275362319, 60.5);
+}
+.container--main--header--actions button:not(.add-btn) {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+}
+.container--main--header--actions button:not(.add-btn) i {
+  color: #a0aec0;
+}
+.container--main--header--actions button:not(.add-btn):hover {
+  background-color: #f7fafc;
+}
+.container--main--table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f7fafc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+.container--main--table th, .container--main--table td {
+  padding: 15px 20px;
+  text-align: left;
+}
+.container--main--table th {
+  font-weight: 500;
+  color: #a0aec0;
+  text-transform: none;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+.container--main--table td {
+  font-size: 14px;
+  color: #2d3748;
+  font-weight: 400;
+}
+.container--main--table td img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+.container--main--table td span {
+  display: flex;
+  align-items: center;
+}
+.container--main--table td:nth-child(3) {
+  color: #1cc243;
+}
+.container--main--table td:nth-child(4) {
+  color: #da1226;
+}
+.container--main--table tbody tr {
+  background-color: #f7fafc;
+}
+.container--main--table tbody tr:nth-child(odd) {
+  background-color: #e2e8f0;
+}
+.container--main--table tbody tr:hover {
+  background-color: #edf2f7;
+}
+.container--main--pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  gap: 10px;
+}
+.container--main--pagination button {
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+.container--main--pagination button i {
+  color: #2d3748;
+  font-size: 12px;
+}
+.container--main--pagination button:hover {
+  background-color: #f7fafc;
+}
+.container--main--pagination span {
+  font-size: 14px;
+  color: #2d3748;
+}
+.container--main--pagination span .page-number {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+
+/*# sourceMappingURL=style.css.map */
