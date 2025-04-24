@@ -5,6 +5,7 @@ import FactList from './components/FactList';
 import Pagination from './components/Pagination';
 import './styles/App.css';
 
+// Не смог подключиться к https://math.tools/api/numbers/, поэтому использовал это:
 const API_URL = 'http://numbersapi.com';
 
 const getFacts = async (start, end) => {
