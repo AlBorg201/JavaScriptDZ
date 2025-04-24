@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-// Базовый URL API
 const API_URL = 'http://numbersapi.com';
 
-// Функция для получения фактов о числах в заданном диапазоне
 export const getFacts = async (start, end) => {
   try {
     const numbers = Array.from({ length: end - start + 1 }, (_, i) => start + i);

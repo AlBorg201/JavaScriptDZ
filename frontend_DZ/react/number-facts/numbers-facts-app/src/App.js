@@ -3,12 +3,10 @@ import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import FactList from './components/FactList';
 import Pagination from './components/Pagination';
-import './styles/App.css'; // Импортируем стили (если они есть)
+import './styles/App.css';
 
-// API-константа
 const API_URL = 'http://numbersapi.com';
 
-// Функция для получения фактов
 const getFacts = async (start, end) => {
   const numbers = Array.from({ length: end - start + 1 }, (_, i) => start + i);
   const requests = numbers.map(number => axios.get(`${API_URL}/${number}`));
@@ -16,21 +14,19 @@ const getFacts = async (start, end) => {
   return responses.map(response => response.data);
 };
 
-// Утилита для извлечения числа из факта
 const extractNumber = fact => {
   const match = fact.match(/^\d+/);
   return match ? parseInt(match[0], 10) : 0;
 };
 
 function App() {
-  const [facts, setFacts] = useState([]); // Все факты
-  const [filteredFacts, setFilteredFacts] = useState([]); // Отфильтрованные факты
-  const [searchQuery, setSearchQuery] = useState(''); // Поисковый запрос
-  const [currentPage, setCurrentPage] = useState(1); // Текущая страница
-  const [factsPerPage] = useState(10); // Фактов на страницу
-  const [sortOrder, setSortOrder] = useState('asc'); // Порядок сортировки
+  const [facts, setFacts] = useState([]);
+  const [filteredFacts, setFilteredFacts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [factsPerPage] = useState(10);
+  const [sortOrder, setSortOrder] = useState('asc');
 
-  // Загрузка фактов при старте
   useEffect(() => {
     const loadFacts = async () => {
       const storedFacts = localStorage.getItem('facts');
@@ -45,7 +41,6 @@ function App() {
     loadFacts();
   }, []);
 
-  // Фильтрация фактов при изменении запроса или списка фактов
   useEffect(() => {
     const filtered = facts.filter(fact =>
       fact.toLowerCase().includes(searchQuery.toLowerCase())
@@ -53,13 +48,11 @@ function App() {
     setFilteredFacts(filtered);
   }, [facts, searchQuery]);
 
-  // Обработчик поиска
   const handleSearch = query => {
     setSearchQuery(query);
     setCurrentPage(1);
   };
 
-  // Загрузка дополнительных фактов
   const handleLoadMore = async () => {
     const nextStart = facts.length + 1;
     const nextEnd = nextStart + 9;
@@ -69,7 +62,6 @@ function App() {
     localStorage.setItem('facts', JSON.stringify(updatedFacts));
   };
 
-  // Обработчик сортировки
   const handleSort = () => {
     const sorted = [...filteredFacts].sort((a, b) => {
       const numA = extractNumber(a);
@@ -80,7 +72,6 @@ function App() {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
 
-  // Пагинация
   const indexOfLastFact = currentPage * factsPerPage;
   const indexOfFirstFact = indexOfLastFact - factsPerPage;
   const currentFacts = filteredFacts.slice(indexOfFirstFact, indexOfLastFact);

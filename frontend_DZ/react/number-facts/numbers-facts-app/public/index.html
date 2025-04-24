@@ -16,7 +16,6 @@
   <script type="text/babel">
     const { useState, useEffect } = React;
 
-    // Сервис для работы с API
     const API_URL = 'http://numbersapi.com';
     const getFacts = async (start, end) => {
       const numbers = Array.from({ length: end - start + 1 }, (_, i) => start + i);
@@ -25,13 +24,11 @@
       return responses.map(response => response.data);
     };
 
-    // Утилита для извлечения числа из строки
     const extractNumber = fact => {
       const match = fact.match(/^\d+/);
       return match ? parseInt(match[0], 10) : 0;
     };
 
-    // Компонент SearchBar
     const SearchBar = ({ onSearch }) => {
       const [query, setQuery] = useState('');
 
@@ -51,7 +48,6 @@
       );
     };
 
-    // Компонент FactList
     const FactList = ({ facts }) => (
       <ul className="space-y-2">
         {facts.map((fact, index) => (
@@ -60,7 +56,6 @@
       </ul>
     );
 
-    // Компонент Pagination
     const Pagination = ({ factsPerPage, totalFacts, paginate }) => {
       const pageNumbers = [];
       for (let i = 1; i <= Math.ceil(totalFacts / factsPerPage); i++) {
@@ -85,7 +80,6 @@
       );
     };
 
-    // Главный компонент App
     const App = () => {
       const [facts, setFacts] = useState([]);
       const [filteredFacts, setFilteredFacts] = useState([]);
@@ -171,7 +165,6 @@
       );
     };
 
-    // Рендеринг приложения
     ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 </body>
