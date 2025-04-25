@@ -9,7 +9,7 @@ export const getFacts = async (start, end) => {
     const responses = await Promise.all(requests);
     return responses.map(response => response.data);
   } catch (error) {
-    console.error('Ошибка при загрузке фактов:', error);
+    console.error('Ошибка при загрузке:', error);
     throw error;
   }
 };

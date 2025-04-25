@@ -5,6 +5,7 @@ import FactList from './components/FactList';
 import Pagination from './components/Pagination';
 import './styles/App.css';
 
+// Не смог подключиться к https://math.tools/api/numbers/, поэтому использовал это:
 const API_URL = 'http://numbersapi.com';
 
 const getFacts = async (start, end) => {
@@ -80,13 +81,13 @@ function App() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Приложение "Факты о числах"</h1>
+      <h1 className="text-2xl font-bold mb-4">Факты о числах</h1>
       <SearchBar onSearch={handleSearch} />
       <button
         onClick={handleSort}
         className="mb-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
       >
-        Сортировать {sortOrder === 'asc' ? 'по убыванию' : 'по возрастанию'}
+        Сортировка {sortOrder === 'asc' ? 'по убыванию' : 'по возрастанию'}
       </button>
       <FactList facts={currentFacts} />
       <Pagination
@@ -98,7 +99,7 @@ function App() {
         onClick={handleLoadMore}
         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
       >
-        Загрузить еще
+        Загрузить
       </button>
     </div>
   );
