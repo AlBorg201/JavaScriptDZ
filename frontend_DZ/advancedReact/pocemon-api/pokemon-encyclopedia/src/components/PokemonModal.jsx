@@ -11,19 +11,19 @@ function PokemonModal({ pokemon, onClose }) {
             className="w-48 h-48 mx-auto mb-4"
           />
           <p className="text-gray-900">
-            <strong>Тип:</strong> {pokemon.types.map((type) => type.type.name).join(', ')}
+            <strong>Type:</strong> {pokemon.types.map((type) => type.type.name).join(', ')}
           </p>
           <p className="text-gray-900">
-            <strong>Способности:</strong> {pokemon.abilities.map((ability) => ability.ability.name).join(', ')}
+            <strong>Abilities:</strong> {pokemon.abilities.map((ability) => ability.ability.name).join(', ')}
           </p>
           <p className="text-gray-900">
-            <strong>Рост:</strong> {pokemon.height / 10} м
+            <strong>Height:</strong> {pokemon.height / 10} м
           </p>
           <p className="text-gray-900">
-            <strong>Вес:</strong> {pokemon.weight / 10} кг
+            <strong>Weight:</strong> {pokemon.weight / 10} кг
           </p>
           <p className="text-gray-900">
-            <strong>Базовые статы:</strong>
+            <strong>Stats:</strong>
             <ul>
               {pokemon.stats.map((stat) => (
                 <li key={stat.stat.name}>

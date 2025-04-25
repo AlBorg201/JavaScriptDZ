@@ -11,10 +11,10 @@ function PokemonCard({ pokemon, onClick }) {
         />
         <h2 className="text-xl font-semibold capitalize text-center text-gray-900">{pokemon.name}</h2>
         <p className="text-center text-gray-900">
-          <strong>Тип:</strong> {pokemon.types.map((type) => type.type.name).join(', ')}
+          <strong>Type:</strong> {pokemon.types.map((type) => type.type.name).join(', ')}
         </p>
         <p className="text-center text-gray-900">
-          <strong>Способности:</strong> {pokemon.abilities.map((ability) => ability.ability.name).join(', ')}
+          <strong>Abilities:</strong> {pokemon.abilities.map((ability) => ability.ability.name).join(', ')}
         </p>
       </div>
     );
