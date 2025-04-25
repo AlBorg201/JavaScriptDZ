@@ -17,10 +17,10 @@ function PokemonModal({ pokemon, onClose }) {
             <strong>Abilities:</strong> {pokemon.abilities.map((ability) => ability.ability.name).join(', ')}
           </p>
           <p className="text-gray-900">
-            <strong>Height:</strong> {pokemon.height / 10} м
+            <strong>Height:</strong> {pokemon.height / 10} m
           </p>
           <p className="text-gray-900">
-            <strong>Weight:</strong> {pokemon.weight / 10} кг
+            <strong>Weight:</strong> {pokemon.weight / 10} kg
           </p>
           <p className="text-gray-900">
             <strong>Stats:</strong>
