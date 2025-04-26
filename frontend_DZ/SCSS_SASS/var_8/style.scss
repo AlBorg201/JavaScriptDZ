@@ -1,17 +1,17 @@
 @use 'sass:color';
 
-$primary-dark: #5a3bff;
-$primary-light: #7b57ff;
+$primary-dark: #5F00D8;
+$primary-light: #B200F1;
 $background-light: #f7fafc;
 $white: #ffffff;
 $text-color: #2d3748;
 $border-color: #e2e8f0;
-$gray-text: #a0aec0;
-$green: #28a745;
+$gray-text: #878787;
+$green: #00CA39;
 $cube-color: #e6d7ff;
 $profit-color: #1cc243;
-$loss-color: #da1226;
-$row-highlight: #e2e8f0;
+$loss-color: #E44067;
+$row-highlight: #EEF2F5;
 $hover-color: #edf2f7;
 
 body {
@@ -20,6 +20,13 @@ body {
     display: flex;
     height: 100vh;
     background-color: $background-light;
+}
+
+.container--sidebar--logo img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    padding-left: 5px;
 }
 
 .container {
@@ -48,12 +55,13 @@ body {
         &--menu {
             list-style: none;
             padding: 0;
+            margin-top: -240px;
 
             &--item {
                 display: flex;
                 align-items: center;
                 padding: 12px 15px;
-                font-size: 14px;
+                font-size: 16px;
                 font-weight: 500;
                 cursor: pointer;
                 border-radius: 8px;
@@ -81,10 +89,9 @@ body {
         }
 
         &--logout {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            text-transform: uppercase;
             padding: 12px 15px;
             border-radius: 8px;
 
