@@ -6,13 +6,20 @@ body {
   background-color: #f7fafc;
 }
 
+.container--sidebar--logo img {
+  width: 50px;
+  height: 50px;
+  display: block;
+  padding-left: 5px;
+}
+
 .container {
   display: flex;
   width: 100%;
 }
 .container--sidebar {
   width: 220px;
-  background: linear-gradient(to bottom, #5a3bff, #7b57ff);
+  background: linear-gradient(to bottom, #5F00D8, #B200F1);
   color: #ffffff;
   padding: 30px 20px;
   display: flex;
@@ -30,12 +37,13 @@ body {
 .container--sidebar--menu {
   list-style: none;
   padding: 0;
+  margin-top: -240px;
 }
 .container--sidebar--menu--item {
   display: flex;
   align-items: center;
   padding: 12px 15px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   border-radius: 8px;
@@ -57,10 +65,9 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
 }
 .container--sidebar--logout {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  text-transform: uppercase;
   padding: 12px 15px;
   border-radius: 8px;
 }
@@ -97,12 +104,12 @@ body {
   font-weight: 500;
 }
 .container--main--header--actions button.add-btn {
-  background-color: #28a745;
+  background-color: #00CA39;
   color: #ffffff;
   padding: 8px 20px;
 }
 .container--main--header--actions button.add-btn:hover {
-  background-color: rgb(35.0724637681, 146.4275362319, 60.5);
+  background-color: rgb(0, 176.5, 49.8044554455);
 }
 .container--main--header--actions button:not(.add-btn) {
   background-color: #ffffff;
@@ -110,7 +117,7 @@ body {
   padding: 8px;
 }
 .container--main--header--actions button:not(.add-btn) i {
-  color: #a0aec0;
+  color: #878787;
 }
 .container--main--header--actions button:not(.add-btn):hover {
   background-color: #f7fafc;
@@ -129,7 +136,7 @@ body {
 }
 .container--main--table th {
   font-weight: 500;
-  color: #a0aec0;
+  color: #878787;
   text-transform: none;
   font-size: 16px;
   letter-spacing: 0.5px;
@@ -153,13 +160,13 @@ body {
   color: #1cc243;
 }
 .container--main--table td:nth-child(4) {
-  color: #da1226;
+  color: #E44067;
 }
 .container--main--table tbody tr {
   background-color: #f7fafc;
 }
 .container--main--table tbody tr:nth-child(odd) {
-  background-color: #e2e8f0;
+  background-color: #EEF2F5;
 }
 .container--main--table tbody tr:hover {
   background-color: #edf2f7;
