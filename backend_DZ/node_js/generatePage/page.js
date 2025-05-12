@@ -82,7 +82,7 @@ yargs
             content: {
                 description: 'Main content',
                 type: 'string',
-                default: 'Welcome to your generated page!'
+                default: 'Шаблон сгенерированной страницы'
             }
         },
         generatePage
