@@ -1,0 +1,10 @@
+2025-05-12 22:47:48: Контакты успешно загружены
+2025-05-12 22:47:48: Сервер запущен на http://localhost:3000
+2025-05-12 22:47:48: GET запросы, где можно перейти по ссылке:
+2025-05-12 22:47:48: Список контактов: http://localhost:3000/contacts
+2025-05-12 22:47:48: Контакт по id: http://localhost:3000/contacts/id/1
+2025-05-12 22:47:48: Контакт по ФИО: http://localhost:3000/contacts/by-name?fullName=Ivanov
+2025-05-12 22:47:48: Сортировка по ФИО по возрастанию: http://localhost:3000/contacts/sort-by-name?order=asc
+2025-05-12 22:47:48: Сортировка по ФИО по убыванию: http://localhost:3000/contacts/sort-by-name?order=desc
+2025-05-12 22:47:48: Сортировка по адресу по возрастанию: http://localhost:3000/contacts/sort-by-address?order=asc
+2025-05-12 22:47:48: Сортировка по адресу по убыванию: http://localhost:3000/contacts/sort-by-address?order=desc

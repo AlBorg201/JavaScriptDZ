@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "start": "node dist/app.js",
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.17",
+    "typescript": "^5.8.3"
+  }
+}
