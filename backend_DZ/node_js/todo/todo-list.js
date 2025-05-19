@@ -6,77 +6,61 @@ const inquirer = require('inquirer');
 
 const NOTES_DIR = path.join(__dirname, 'notes');
 
-/**
- * Ensures the notes directory exists
- * @returns {Promise<void>}
- */
 async function ensureNotesDir() {
     try {
         await fs.mkdir(NOTES_DIR, { recursive: true });
     } catch (error) {
-        console.error('Error creating notes directory:', error.message);
+        console.error('Ошибка при создании директории:', error.message);
         process.exit(1);
     }
 }
 
-/**
- * Creates a new note
- * @returns {Promise<void>}
- */
 async function createNote() {
     try {
         const answers = await inquirer.prompt([
             {
                 type: 'input',
                 name: 'title',
-                message: 'Enter note title:',
-                validate: input => input.trim() ? true : 'Title cannot be empty'
+                message: 'Введите название заметки:',
+                validate: input => input.trim() ? true : 'Название заметки не может быть пустым'
             },
             {
                 type: 'input',
                 name: 'content',
-                message: 'Enter note content:',
-                validate: input => input.trim() ? true : 'Content cannot be empty'
+                message: 'Введите содержимое заметки:',
+                validate: input => input.trim() ? true : 'Содержимое заметки не может быть пустым'
             }
         ]);
 
         const filePath = path.join(NOTES_DIR, `${answers.title}.txt`);
         await fs.writeFile(filePath, answers.content);
-        console.log(`Note "${answers.title}" created successfully!`);
+        console.log(`Заметка "${answers.title}" создана`);
     } catch (error) {
-        console.error('Error creating note:', error.message);
+        console.error('Ошибка при создании заметки:', error.message);
     }
 }
 
-/**
- * Lists all notes
- * @returns {Promise<void>}
- */
 async function listNotes() {
     try {
         const files = await fs.readdir(NOTES_DIR);
         if (files.length === 0) {
-            console.log('No notes found.');
+            console.log('Заметки не найдены');
             return;
         }
-        console.log('\nAvailable notes:');
+        console.log('\nДоступные заметки:');
         files.forEach((file, index) => {
             console.log(`${index + 1}. ${path.basename(file, '.txt')}`);
         });
     } catch (error) {
-        console.error('Error listing notes:', error.message);
+        console.error('Ошибка при получении списка заметок:', error.message);
     }
 }
 
-/**
- * Reads a specific note
- * @returns {Promise<void>}
- */
 async function readNote() {
     try {
         const files = await fs.readdir(NOTES_DIR);
         if (files.length === 0) {
-            console.log('No notes to read.');
+            console.log('Заметки не найдены');
             return;
         }
 
@@ -84,29 +68,25 @@ async function readNote() {
             {
                 type: 'list',
                 name: 'title',
-                message: 'Select a note to read:',
+                message: 'Выберите заметку:',
                 choices: files.map(file => path.basename(file, '.txt'))
             }
         ]);
 
         const filePath = path.join(NOTES_DIR, `${answers.title}.txt`);
         const content = await fs.readFile(filePath, 'utf8');
-        console.log(`\nNote: ${answers.title}`);
-        console.log('Content:', content);
+        console.log(`\nЗаметка: ${answers.title}`);
+        console.log('Содержимое:', content);
     } catch (error) {
-        console.error('Error reading note:', error.message);
+        console.error('Ошибка при чтении заметки:', error.message);
     }
 }
 
-/**
- * Edits an existing note
- * @returns {Promise<void>}
- */
 async function editNote() {
     try {
         const files = await fs.readdir(NOTES_DIR);
         if (files.length === 0) {
-            console.log('No notes to edit.');
+            console.log('Заметки не найдены');
             return;
         }
 
@@ -114,34 +94,30 @@ async function editNote() {
             {
                 type: 'list',
                 name: 'title',
-                message: 'Select a note to edit:',
+                message: 'Выберите заметку:',
                 choices: files.map(file => path.basename(file, '.txt'))
             },
             {
                 type: 'input',
                 name: 'content',
-                message: 'Enter new content:',
-                validate: input => input.trim() ? true : 'Content cannot be empty'
+                message: 'Введите новое содержимое:',
+                validate: input => input.trim() ? true : 'Содержимое заметки не может быть пустым'
             }
         ]);
 
         const filePath = path.join(NOTES_DIR, `${answers.title}.txt`);
         await fs.writeFile(filePath, answers.content);
-        console.log(`Note "${answers.title}" updated successfully!`);
+        console.log(`Заметка "${answers.title}" обновлена`);
     } catch (error) {
-        console.error('Error editing note:', error.message);
+        console.error('Ошибка при редактировании заметки:', error.message);
     }
 }
 
-/**
- * Deletes a specific note
- * @returns {Promise<void>}
- */
 async function deleteNote() {
     try {
         const files = await fs.readdir(NOTES_DIR);
         if (files.length === 0) {
-            console.log('No notes to delete.');
+            console.log('Заметки не найдены');
             return;
         }
 
@@ -149,28 +125,24 @@ async function deleteNote() {
             {
                 type: 'list',
                 name: 'title',
-                message: 'Select a note to delete:',
+                message: 'Выберите заметку для удаления:',
                 choices: files.map(file => path.basename(file, '.txt'))
             }
         ]);
 
         const filePath = path.join(NOTES_DIR, `${answers.title}.txt`);
         await fs.unlink(filePath);
-        console.log(`Note "${answers.title}" deleted successfully!`);
+        console.log(`Заметка "${answers.title}" удалена`);
     } catch (error) {
-        console.error('Error deleting note:', error.message);
+        console.error('Ошибка при удалении заметки:', error.message);
     }
 }
 
-/**
- * Deletes all notes
- * @returns {Promise<void>}
- */
 async function deleteAllNotes() {
     try {
         const files = await fs.readdir(NOTES_DIR);
         if (files.length === 0) {
-            console.log('No notes to delete.');
+            console.log('Заметки не найдены.');
             return;
         }
 
@@ -178,7 +150,7 @@ async function deleteAllNotes() {
             {
                 type: 'confirm',
                 name: 'confirm',
-                message: 'Are you sure you want to delete all notes?',
+                message: 'Вы действительно хотите удалить все заметки?',
                 default: false
             }
         ]);
@@ -187,30 +159,26 @@ async function deleteAllNotes() {
             for (const file of files) {
                 await fs.unlink(path.join(NOTES_DIR, file));
             }
-            console.log('All notes deleted successfully!');
+            console.log('Все заметки удалены');
         } else {
-            console.log('Deletion cancelled.');
+            console.log('Отмена удаления всех заметок');
         }
     } catch (error) {
-        console.error('Error deleting all notes:', error.message);
+        console.error('Ошибка при удалении всех заметок:', error.message);
     }
 }
 
-/**
- * Main CLI menu
- * @returns {Promise<void>}
- */
 async function mainMenu() {
     await ensureNotesDir();
 
     const choices = [
-        { name: '1. List all notes', value: 'list' },
-        { name: '2. Read a note', value: 'read' },
-        { name: '3. Create a note', value: 'create' },
-        { name: '4. Edit a note', value: 'edit' },
-        { name: '5. Delete a note', value: 'delete' },
-        { name: '6. Delete all notes', value: 'deleteAll' },
-        { name: '7. Exit', value: 'exit' }
+        { name: '1. Список заметок', value: 'list' },
+        { name: '2. Прочитать заметку', value: 'read' },
+        { name: '3. Создать заметку', value: 'create' },
+        { name: '4. Изменить заметку', value: 'edit' },
+        { name: '5. Удалить заметку', value: 'delete' },
+        { name: '6. Удалить все заметки', value: 'deleteAll' },
+        { name: '7. Выход', value: 'exit' }
     ];
 
     while (true) {
@@ -219,7 +187,7 @@ async function mainMenu() {
                 {
                     type: 'list',
                     name: 'action',
-                    message: 'What would you like to do?',
+                    message: 'Главное меню',
                     choices
                 }
             ]);
@@ -244,17 +212,15 @@ async function mainMenu() {
                     await deleteAllNotes();
                     break;
                 case 'exit':
-                    console.log('Goodbye!');
                     return;
             }
         } catch (error) {
-            console.error('Error in main menu:', error.message);
+            console.error('Ошибка в главном меню:', error.message);
         }
     }
 }
 
-// Start the application
 mainMenu().catch(error => {
-    console.error('Fatal error:', error.message);
+    console.error('Ошибка:', error.message);
     process.exit(1);
 });
