@@ -45,13 +45,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// В начало файла src/app.ts
 const express_1 = __importDefault(require("express"));
 const database_1 = require("./config/database");
 const Contact_1 = require("./models/Contact");
 const sequelize_1 = require("sequelize");
 const fs = __importStar(require("fs/promises"));
-// Обертка для асинхронных обработчиков
 const asyncHandler = (fn) => {
     return (req, res, next) => {
         Promise.resolve(fn(req, res, next)).catch(next);
@@ -64,13 +62,12 @@ app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
     next();
 });
-// Функция для загрузки данных из JSON
 function loadInitialData() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const count = yield Contact_1.Contact.count();
             if (count > 0) {
-                console.log('Данные уже существуют в базе, пропускаем импорт');
+                console.log('Данные уже существуют в базе, импорт не требуется');
                 return;
             }
             const data = yield fs.readFile('contacts.json', 'utf8');
@@ -83,7 +80,7 @@ function loadInitialData() {
         }
     });
 }
-// GET
+//GET
 app.get('/contacts', asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const contacts = yield Contact_1.Contact.findAll();
     res.status(200).json(contacts);
@@ -101,7 +98,7 @@ app.get('/contacts/by-name', asyncHandler((req, res) => __awaiter(void 0, void 0
     const { fullName } = req.query;
     const contacts = yield Contact_1.Contact.findAll({
         where: {
-            fullName: { [sequelize_1.Op.iLike]: `%${fullName}%` }
+            fullName: { [sequelize_1.Op.like]: `%${fullName}%` }
         }
     });
     res.status(200).json(contacts);
@@ -120,7 +117,7 @@ app.get('/contacts/sort-by-address', asyncHandler((req, res) => __awaiter(void 0
     });
     res.status(200).json(contacts);
 })));
-// POST
+//POST
 app.post('/contacts', asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { fullName, phone, address } = req.body;
     if (!fullName || !phone || !address) {
@@ -129,7 +126,7 @@ app.post('/contacts', asyncHandler((req, res) => __awaiter(void 0, void 0, void 
     const newContact = yield Contact_1.Contact.create({ fullName, phone, address });
     res.status(201).json(newContact);
 })));
-// DELETE
+//DELETE
 app.delete('/contacts/id/:id', asyncHandler((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const contact = yield Contact_1.Contact.findByPk(parseInt(req.params.id));
     if (contact) {
@@ -144,7 +141,7 @@ app.delete('/contacts/by-surname', asyncHandler((req, res) => __awaiter(void 0, 
     const { surname } = req.query;
     const deleted = yield Contact_1.Contact.destroy({
         where: {
-            fullName: { [sequelize_1.Op.iLike]: `${surname}%` }
+            fullName: { [sequelize_1.Op.like]: `${surname}%` }
         }
     });
     if (deleted > 0) {
@@ -158,7 +155,6 @@ app.delete('/contacts/clear', asyncHandler((req, res) => __awaiter(void 0, void 
     yield Contact_1.Contact.destroy({ where: {} });
     res.status(200).json({ message: 'Книга контактов очищена' });
 })));
-// Error handling
 app.use((req, res) => {
     res.status(404).json({ error: 'Страница не найдена' });
 });
@@ -166,18 +162,16 @@ app.use((err, req, res, next) => {
     console.error(`[${new Date().toISOString()}] Ошибка:`, err.message);
     res.status(500).json({ error: 'Внутренняя ошибка сервера' });
 });
-// Graceful shutdown
 process.on('SIGINT', () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('Получен SIGINT. Завершаем работу сервера...');
+    console.log('Получен SIGINT, сервер выключается');
     yield database_1.sequelize.close();
     process.exit(0);
 }));
 process.on('SIGTERM', () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('Получен SIGTERM. Завершаем работу сервера...');
+    console.log('Получен SIGTERM, сервер выключается');
     yield database_1.sequelize.close();
     process.exit(0);
 }));
-// Start server
 database_1.sequelize.sync({ force: false }).then(() => __awaiter(void 0, void 0, void 0, function* () {
     yield loadInitialData();
     app.listen(PORT, () => {

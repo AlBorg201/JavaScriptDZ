@@ -8,3 +8,41 @@
 2025-05-12 22:47:48: Сортировка по ФИО по убыванию: http://localhost:3000/contacts/sort-by-name?order=desc
 2025-05-12 22:47:48: Сортировка по адресу по возрастанию: http://localhost:3000/contacts/sort-by-address?order=asc
 2025-05-12 22:47:48: Сортировка по адресу по убыванию: http://localhost:3000/contacts/sort-by-address?order=desc
+2025-05-14 12:06:55: Контакты успешно загружены
+2025-05-14 12:06:55: Сервер запущен на http://localhost:3000
+2025-05-14 12:06:55: GET запросы, где можно перейти по ссылке:
+2025-05-14 12:06:55: Список контактов: http://localhost:3000/contacts
+2025-05-14 12:06:55: Контакт по id: http://localhost:3000/contacts/id/1
+2025-05-14 12:06:55: Контакт по ФИО: http://localhost:3000/contacts/by-name?fullName=Ivanov
+2025-05-14 12:06:55: Сортировка по ФИО по возрастанию: http://localhost:3000/contacts/sort-by-name?order=asc
+2025-05-14 12:06:55: Сортировка по ФИО по убыванию: http://localhost:3000/contacts/sort-by-name?order=desc
+2025-05-14 12:06:55: Сортировка по адресу по возрастанию: http://localhost:3000/contacts/sort-by-address?order=asc
+2025-05-14 12:06:55: Сортировка по адресу по убыванию: http://localhost:3000/contacts/sort-by-address?order=desc
+2025-05-14 12:27:41: Контакты успешно загружены
+2025-05-14 12:27:41: Сервер запущен на http://localhost:3000
+2025-05-14 12:27:41: GET запросы, где можно перейти по ссылке:
+2025-05-14 12:27:41: Список контактов: http://localhost:3000/contacts
+2025-05-14 12:27:41: Контакт по id: http://localhost:3000/contacts/id/1
+2025-05-14 12:27:41: Контакт по ФИО: http://localhost:3000/contacts/by-name?fullName=Ivanov
+2025-05-14 12:27:41: Сортировка по ФИО по возрастанию: http://localhost:3000/contacts/sort-by-name?order=asc
+2025-05-14 12:27:41: Сортировка по ФИО по убыванию: http://localhost:3000/contacts/sort-by-name?order=desc
+2025-05-14 12:27:41: Сортировка по адресу по возрастанию: http://localhost:3000/contacts/sort-by-address?order=asc
+2025-05-14 12:27:41: Сортировка по адресу по убыванию: http://localhost:3000/contacts/sort-by-address?order=desc
+2025-05-14 12:30:26: Контакты успешно загружены
+2025-05-14 12:30:26: GET запросы, где можно перейти по ссылке:
+2025-05-14 12:30:26: Список контактов: http://localhost:3000/contacts
+2025-05-14 12:30:26: Контакт по id: http://localhost:3000/contacts/id/1
+2025-05-14 12:30:26: Контакт по ФИО: http://localhost:3000/contacts/by-name?fullName=Ivanov
+2025-05-14 12:30:26: Сортировка по ФИО по возрастанию: http://localhost:3000/contacts/sort-by-name?order=asc
+2025-05-14 12:30:26: Сортировка по ФИО по убыванию: http://localhost:3000/contacts/sort-by-name?order=desc
+2025-05-14 12:30:26: Сортировка по адресу по возрастанию: http://localhost:3000/contacts/sort-by-address?order=asc
+2025-05-14 12:30:26: Сортировка по адресу по убыванию: http://localhost:3000/contacts/sort-by-address?order=desc
+2025-05-14 12:40:50: Контакты успешно загружены
+2025-05-14 12:40:50: GET запросы, где можно перейти по ссылке:
+2025-05-14 12:40:50: Список контактов: http://localhost:3000/contacts
+2025-05-14 12:40:50: Контакт по id: http://localhost:3000/contacts/id/1
+2025-05-14 12:40:50: Контакт по ФИО: http://localhost:3000/contacts/by-name?fullName=Ivanov
+2025-05-14 12:40:50: Сортировка по ФИО по возрастанию: http://localhost:3000/contacts/sort-by-name?order=asc
+2025-05-14 12:40:50: Сортировка по ФИО по убыванию: http://localhost:3000/contacts/sort-by-name?order=desc
+2025-05-14 12:40:50: Сортировка по адресу по возрастанию: http://localhost:3000/contacts/sort-by-address?order=asc
+2025-05-14 12:40:50: Сортировка по адресу по убыванию: http://localhost:3000/contacts/sort-by-address?order=desc

@@ -1,0 +1,12 @@
+2025-05-14 12:34:20: [2025-05-14T05:34:20.553Z] Ошибка: Unexpected token ''', "'{fullName"... is not valid JSON
+2025-05-14 12:36:21: [2025-05-14T05:36:21.708Z] Ошибка: Unexpected token ''', "'{fullName"... is not valid JSON
+2025-05-14 12:37:30: [2025-05-14T05:37:30.799Z] Ошибка: Unexpected token ''', "'{fullName"... is not valid JSON
+2025-05-14 12:37:50: [2025-05-14T05:37:50.013Z] Ошибка: Unexpected token ''', "'{fullName"... is not valid JSON
+2025-05-14 12:38:37: [2025-05-14T05:38:37.411Z] Ошибка: Unexpected token ''', "'{fullName"... is not valid JSON
+2025-05-14 12:39:09: [2025-05-14T05:39:09.243Z] Ошибка: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+2025-05-14 12:39:35: [2025-05-14T05:39:35.218Z] Ошибка: Unexpected token ''', "'{fullName"... is not valid JSON
+2025-05-14 12:40:17: [2025-05-14T05:40:17.208Z] Ошибка: Unexpected token ''', "'{fullName"... is not valid JSON
+2025-05-14 12:40:24: [2025-05-14T05:40:24.546Z] Ошибка: Unexpected token ''', "'{fullName:" is not valid JSON
+2025-05-14 12:40:26: [2025-05-14T05:40:26.090Z] Ошибка: Unexpected token ''', "'{fullName:" is not valid JSON
+2025-05-14 12:40:56: [2025-05-14T05:40:56.662Z] Ошибка: Unexpected token ''', "'{fullName:" is not valid JSON
+2025-05-14 12:41:00: [2025-05-14T05:41:00.336Z] Ошибка: Unexpected token ''', "'{fullName"... is not valid JSON

@@ -124,13 +124,13 @@ app.use((err, req, res, next) => {
 });
 
 process.on('SIGINT', async () => {
-  console.log('Получен SIGINT. Завершаем работу сервера...');
+  console.log('Завершение работы сервера (SIGINT)');
   await saveContacts();
   process.exit(0);
 });
 
 process.on('SIGTERM', async () => {
-  console.log('Получен SIGTERM. Завершаем работу сервера...');
+  console.log('Завершение работы сервера (SIGTERM)');
   await saveContacts();
   process.exit(0);
 });

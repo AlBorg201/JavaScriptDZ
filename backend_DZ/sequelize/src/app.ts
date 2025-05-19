@@ -1,11 +1,9 @@
-// В начало файла src/app.ts
 import express, { Request, Response, NextFunction } from 'express';
 import { sequelize } from './config/database';
 import { Contact } from './models/Contact';
 import { Op } from 'sequelize';
 import * as fs from 'fs/promises';
 
-// Обертка для асинхронных обработчиков
 const asyncHandler = (fn: (req: Request, res: Response, next: NextFunction) => Promise<any>) => {
   return (req: Request, res: Response, next: NextFunction) => {
     Promise.resolve(fn(req, res, next)).catch(next);
@@ -22,12 +20,11 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-// Функция для загрузки данных из JSON
 async function loadInitialData() {
   try {
     const count = await Contact.count();
     if (count > 0) {
-      console.log('Данные уже существуют в базе, пропускаем импорт');
+      console.log('Данные уже существуют в базе, импорт не требуется');
       return;
     }
     const data = await fs.readFile('contacts.json', 'utf8');
@@ -39,7 +36,7 @@ async function loadInitialData() {
   }
 }
 
-// GET
+//GET
 app.get('/contacts', asyncHandler(async (req: Request, res: Response) => {
   const contacts = await Contact.findAll();
   res.status(200).json(contacts);
@@ -58,7 +55,7 @@ app.get('/contacts/by-name', asyncHandler(async (req: Request, res: Response) =>
   const { fullName } = req.query as { fullName: string };
   const contacts = await Contact.findAll({
     where: {
-      fullName: { [Op.iLike]: `%${fullName}%` }
+      fullName: { [Op.like]: `%${fullName}%` }
     }
   });
   res.status(200).json(contacts);
@@ -80,7 +77,7 @@ app.get('/contacts/sort-by-address', asyncHandler(async (req: Request, res: Resp
   res.status(200).json(contacts);
 }));
 
-// POST
+//POST
 app.post('/contacts', asyncHandler(async (req: Request, res: Response) => {
   const { fullName, phone, address } = req.body;
   if (!fullName || !phone || !address) {
@@ -90,7 +87,7 @@ app.post('/contacts', asyncHandler(async (req: Request, res: Response) => {
   res.status(201).json(newContact);
 }));
 
-// DELETE
+//DELETE
 app.delete('/contacts/id/:id', asyncHandler(async (req: Request, res: Response) => {
   const contact = await Contact.findByPk(parseInt(req.params.id));
   if (contact) {
@@ -105,7 +102,7 @@ app.delete('/contacts/by-surname', asyncHandler(async (req: Request, res: Respon
   const { surname } = req.query as { surname: string };
   const deleted = await Contact.destroy({
     where: {
-      fullName: { [Op.iLike]: `${surname}%` }
+      fullName: { [Op.like]: `${surname}%` }
     }
   });
   if (deleted > 0) {
@@ -120,7 +117,6 @@ app.delete('/contacts/clear', asyncHandler(async (req: Request, res: Response) =
   res.status(200).json({ message: 'Книга контактов очищена' });
 }));
 
-// Error handling
 app.use((req: Request, res: Response) => {
   res.status(404).json({ error: 'Страница не найдена' });
 });
@@ -130,20 +126,18 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(500).json({ error: 'Внутренняя ошибка сервера' });
 });
 
-// Graceful shutdown
 process.on('SIGINT', async () => {
-  console.log('Получен SIGINT. Завершаем работу сервера...');
+  console.log('Получен SIGINT, сервер выключается');
   await sequelize.close();
   process.exit(0);
 });
 
 process.on('SIGTERM', async () => {
-  console.log('Получен SIGTERM. Завершаем работу сервера...');
+  console.log('Получен SIGTERM, сервер выключается');
   await sequelize.close();
   process.exit(0);
 });
 
-// Start server
 sequelize.sync({ force: false }).then(async () => {
   await loadInitialData();
   app.listen(PORT, () => {
