@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "fullName": "Petrov Petr Petrovich",
+    "phone": "+79999999999",
+    "address": "Abakan, Lenina street, 1"
+  },
+  {
+    "id": 2,
+    "fullName": "Sergeev Sergey Sergeevich",
+    "phone": "+79999999998",
+    "address": "Tomsk, Lenina street, 2"
+  },
+  {
+    "id": 3,
+    "fullName": "Ivanov Ivan Ivanovich",
+    "phone": "+79999999997",
+    "address": "Moscow, Lenina street, 3"
+  }
+]
